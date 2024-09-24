@@ -7,22 +7,13 @@ public:
         if(nums[high]!=nums[high-1])    return nums[high];
         while(low<=high){
             mid=(low+high)/2;
-            if(mid%2==0){
-                if(nums[mid]==nums[mid+1])
-                    low=mid+1;
-                else if(nums[mid]==nums[mid-1])
-                    high=mid-1;
-                else    
-                    return nums[mid];
-            }
-            else{
-                if(nums[mid]==nums[mid+1])
-                    high=mid-1;
-                else if(nums[mid]==nums[mid-1])
-                    low=mid+1;
-                else    
-                    return nums[mid];
-            }
+            if((mid%2==0 && nums[mid]==nums[mid+1])||(mid%2!=0 && nums[mid]==nums[mid-1]))
+                        low=mid+1;
+            else if((mid%2!=0 && nums[mid]==nums[mid+1])||(mid%2==0 && nums[mid]==nums[mid-1]))
+                 high=mid-1;
+            else 
+                 return nums[mid];
+                
         }
         return -1;
     }
